@@ -23,7 +23,7 @@ These instructions will help you set up and run the Student Accommodation Progra
 
 ### Installation
 
-1. Clone the repository: `git clone https://github.com/your-username/student-accommodation.git`
+1. Clone the repository: `[git clone https://github.com/your-username/student-accommodation](https://github.com/mthobisi30/CMPG223-PROJECT-2023).git`
 2. Open the project in Visual Studio.
 3. Configure the connection string to your SQL Server database in `app.config`.
 4. Build and run the application.
