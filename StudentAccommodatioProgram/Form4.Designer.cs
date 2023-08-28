@@ -1,7 +1,7 @@
 ﻿
 namespace StudentAccommodatioProgram
 {
-    partial class LOGIN
+    partial class frmLogin
     {
         /// <summary>
         /// Required designer variable.
@@ -29,6 +29,7 @@ namespace StudentAccommodatioProgram
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.panel2 = new System.Windows.Forms.Panel();
             this.lblCreate = new System.Windows.Forms.LinkLabel();
             this.btnLogin = new System.Windows.Forms.Button();
@@ -38,8 +39,10 @@ namespace StudentAccommodatioProgram
             this.label2 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
+            this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
             this.panel2.SuspendLayout();
             this.panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             this.SuspendLayout();
             // 
             // panel2
@@ -73,6 +76,7 @@ namespace StudentAccommodatioProgram
             this.btnLogin.TabIndex = 10;
             this.btnLogin.Text = "Register";
             this.btnLogin.UseVisualStyleBackColor = true;
+            this.btnLogin.Click += new System.EventHandler(this.btnLogin_Click);
             // 
             // txtPassword
             // 
@@ -93,18 +97,18 @@ namespace StudentAccommodatioProgram
             this.label3.AutoSize = true;
             this.label3.Location = new System.Drawing.Point(20, 82);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(53, 13);
+            this.label3.Size = new System.Drawing.Size(56, 13);
             this.label3.TabIndex = 1;
-            this.label3.Text = "Password";
+            this.label3.Text = "Password:";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
             this.label2.Location = new System.Drawing.Point(20, 37);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(43, 13);
+            this.label2.Size = new System.Drawing.Size(60, 13);
             this.label2.TabIndex = 0;
-            this.label2.Text = "User ID";
+            this.label2.Text = "UserName:";
             // 
             // panel1
             // 
@@ -124,19 +128,24 @@ namespace StudentAccommodatioProgram
             this.label1.TabIndex = 0;
             this.label1.Text = "Login";
             // 
-            // LOGIN
+            // errorProvider1
+            // 
+            this.errorProvider1.ContainerControl = this;
+            // 
+            // frmLogin
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(473, 450);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
-            this.Name = "LOGIN";
-            this.Text = "frmLogin";
+            this.Name = "frmLogin";
+            this.Text = "Login";
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -152,5 +161,6 @@ namespace StudentAccommodatioProgram
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.ErrorProvider errorProvider1;
     }
 }

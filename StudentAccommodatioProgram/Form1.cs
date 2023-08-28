@@ -16,5 +16,23 @@ namespace StudentAccommodatioProgram
         {
             InitializeComponent();
         }
+
+        private void btnNext_Click(object sender, EventArgs e)
+        {
+            if(rdbtnStudent.Checked)
+            {
+                frmRegisterStudent registerStudent = new frmRegisterStudent();
+                registerStudent.Show();
+            }
+            else if(rdbtnAgent.Checked)
+            {
+                frmRegistratioAgent registratioAgent = new frmRegistratioAgent();
+                registratioAgent.Show();
+            }
+            else
+            { 
+                MessageBox.Show("Please select whether you are a student or an agent.", "Selection Error", MessageBoxButtons.OK, MessageBoxIcon.Warning); 
+            }
+        }
     }
 }

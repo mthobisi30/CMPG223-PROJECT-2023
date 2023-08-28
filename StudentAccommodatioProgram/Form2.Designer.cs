@@ -29,6 +29,7 @@ namespace StudentAccommodatioProgram
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.panel1 = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
@@ -44,8 +45,10 @@ namespace StudentAccommodatioProgram
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
+            this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
@@ -94,6 +97,7 @@ namespace StudentAccommodatioProgram
             this.linkLabel1.TabIndex = 11;
             this.linkLabel1.TabStop = true;
             this.linkLabel1.Text = "Login (Already Have an account?)";
+            this.linkLabel1.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel1_LinkClicked);
             // 
             // btnregister
             // 
@@ -103,6 +107,7 @@ namespace StudentAccommodatioProgram
             this.btnregister.TabIndex = 10;
             this.btnregister.Text = "Register";
             this.btnregister.UseVisualStyleBackColor = true;
+            this.btnregister.Click += new System.EventHandler(this.btnregister_Click);
             // 
             // label6
             // 
@@ -185,6 +190,10 @@ namespace StudentAccommodatioProgram
             this.label2.TabIndex = 0;
             this.label2.Text = "First Name:";
             // 
+            // errorProvider1
+            // 
+            this.errorProvider1.ContainerControl = this;
+            // 
             // frmRegistratioAgent
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -198,6 +207,7 @@ namespace StudentAccommodatioProgram
             this.panel1.PerformLayout();
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -219,5 +229,6 @@ namespace StudentAccommodatioProgram
         private System.Windows.Forms.TextBox txtCompany;
         private System.Windows.Forms.TextBox txtPhone;
         private System.Windows.Forms.TextBox txtmail;
+        private System.Windows.Forms.ErrorProvider errorProvider1;
     }
 }

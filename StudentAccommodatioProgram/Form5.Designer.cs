@@ -102,6 +102,7 @@ namespace StudentAccommodatioProgram
             this.btnGallery.TabIndex = 8;
             this.btnGallery.Text = "View Gallery";
             this.btnGallery.UseVisualStyleBackColor = true;
+            this.btnGallery.Click += new System.EventHandler(this.btnGallery_Click);
             // 
             // btnSelect
             // 
@@ -111,6 +112,7 @@ namespace StudentAccommodatioProgram
             this.btnSelect.TabIndex = 7;
             this.btnSelect.Text = "Select && Continue";
             this.btnSelect.UseVisualStyleBackColor = true;
+            this.btnSelect.Click += new System.EventHandler(this.btnSelect_Click);
             // 
             // btnClear
             // 
@@ -120,6 +122,7 @@ namespace StudentAccommodatioProgram
             this.btnClear.TabIndex = 6;
             this.btnClear.Text = "Clear Selection";
             this.btnClear.UseVisualStyleBackColor = true;
+            this.btnClear.Click += new System.EventHandler(this.btnClear_Click);
             // 
             // txtDisplay
             // 
@@ -139,6 +142,7 @@ namespace StudentAccommodatioProgram
             this.rdApartments.TabStop = true;
             this.rdApartments.Text = "StayHome Apartments";
             this.rdApartments.UseVisualStyleBackColor = true;
+            this.rdApartments.CheckedChanged += new System.EventHandler(this.rdApartments_CheckedChanged);
             // 
             // rdFlats
             // 
@@ -150,6 +154,7 @@ namespace StudentAccommodatioProgram
             this.rdFlats.TabStop = true;
             this.rdFlats.Text = "Campus Flats";
             this.rdFlats.UseVisualStyleBackColor = true;
+            this.rdFlats.CheckedChanged += new System.EventHandler(this.rdFlats_CheckedChanged);
             // 
             // rdHouse
             // 
@@ -161,6 +166,7 @@ namespace StudentAccommodatioProgram
             this.rdHouse.TabStop = true;
             this.rdHouse.Text = "Student Living House";
             this.rdHouse.UseVisualStyleBackColor = true;
+            this.rdHouse.CheckedChanged += new System.EventHandler(this.rdHouse_CheckedChanged);
             // 
             // rdLofts
             // 
@@ -172,6 +178,7 @@ namespace StudentAccommodatioProgram
             this.rdLofts.TabStop = true;
             this.rdLofts.Text = "StudySafe Lofts";
             this.rdLofts.UseVisualStyleBackColor = true;
+            this.rdLofts.CheckedChanged += new System.EventHandler(this.rdLofts_CheckedChanged);
             // 
             // rdHome
             // 
@@ -183,6 +190,7 @@ namespace StudentAccommodatioProgram
             this.rdHome.TabStop = true;
             this.rdHome.Text = "Away Home";
             this.rdHome.UseVisualStyleBackColor = true;
+            this.rdHome.CheckedChanged += new System.EventHandler(this.rdHome_CheckedChanged);
             // 
             // frmAccommodation
             // 

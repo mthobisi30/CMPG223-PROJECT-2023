@@ -30,45 +30,45 @@ namespace StudentAccommodatioProgram
         private void InitializeComponent()
         {
             this.panel1 = new System.Windows.Forms.Panel();
-            this.btnClear = new System.Windows.Forms.Button();
-            this.btnSubmit = new System.Windows.Forms.Button();
             this.txtAmount = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.cmbPayment = new System.Windows.Forms.ComboBox();
             this.label2 = new System.Windows.Forms.Label();
+            this.btnClear = new System.Windows.Forms.Button();
+            this.btnSubmit = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.pnlBursary = new System.Windows.Forms.Panel();
+            this.label12 = new System.Windows.Forms.Label();
+            this.label14 = new System.Windows.Forms.Label();
+            this.txtCellphone = new System.Windows.Forms.TextBox();
+            this.label11 = new System.Windows.Forms.Label();
+            this.txtBursar = new System.Windows.Forms.TextBox();
             this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.txtMail = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.pnlCash = new System.Windows.Forms.Panel();
+            this.label15 = new System.Windows.Forms.Label();
+            this.txtBrowse = new System.Windows.Forms.TextBox();
+            this.btnBrowse = new System.Windows.Forms.Button();
+            this.btnUpload = new System.Windows.Forms.Button();
             this.button4 = new System.Windows.Forms.Button();
             this.txtRef = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.pnlEFT = new System.Windows.Forms.Panel();
+            this.label13 = new System.Windows.Forms.Label();
+            this.label10 = new System.Windows.Forms.Label();
+            this.txtAccNo = new System.Windows.Forms.TextBox();
+            this.txtHolder = new System.Windows.Forms.TextBox();
             this.button5 = new System.Windows.Forms.Button();
             this.button6 = new System.Windows.Forms.Button();
             this.txtBank = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
-            this.txtHolder = new System.Windows.Forms.TextBox();
-            this.txtAccNo = new System.Windows.Forms.TextBox();
             this.btnBack = new System.Windows.Forms.Button();
-            this.txtBursar = new System.Windows.Forms.TextBox();
-            this.label10 = new System.Windows.Forms.Label();
-            this.label11 = new System.Windows.Forms.Label();
-            this.txtCellphone = new System.Windows.Forms.TextBox();
-            this.label12 = new System.Windows.Forms.Label();
             this.openFilePOP = new System.Windows.Forms.OpenFileDialog();
-            this.btnUpload = new System.Windows.Forms.Button();
-            this.btnBrowse = new System.Windows.Forms.Button();
-            this.txtBrowse = new System.Windows.Forms.TextBox();
-            this.label13 = new System.Windows.Forms.Label();
-            this.label14 = new System.Windows.Forms.Label();
-            this.label15 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.pnlBursary.SuspendLayout();
             this.pnlCash.SuspendLayout();
@@ -85,24 +85,6 @@ namespace StudentAccommodatioProgram
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(288, 162);
             this.panel1.TabIndex = 0;
-            // 
-            // btnClear
-            // 
-            this.btnClear.Location = new System.Drawing.Point(392, 524);
-            this.btnClear.Name = "btnClear";
-            this.btnClear.Size = new System.Drawing.Size(119, 39);
-            this.btnClear.TabIndex = 6;
-            this.btnClear.Text = "Clear";
-            this.btnClear.UseVisualStyleBackColor = true;
-            // 
-            // btnSubmit
-            // 
-            this.btnSubmit.Location = new System.Drawing.Point(644, 522);
-            this.btnSubmit.Name = "btnSubmit";
-            this.btnSubmit.Size = new System.Drawing.Size(128, 39);
-            this.btnSubmit.TabIndex = 5;
-            this.btnSubmit.Text = "Submit";
-            this.btnSubmit.UseVisualStyleBackColor = true;
             // 
             // txtAmount
             // 
@@ -131,6 +113,7 @@ namespace StudentAccommodatioProgram
             this.cmbPayment.Name = "cmbPayment";
             this.cmbPayment.Size = new System.Drawing.Size(126, 21);
             this.cmbPayment.TabIndex = 2;
+            this.cmbPayment.SelectedIndexChanged += new System.EventHandler(this.cmbPayment_SelectedIndexChanged);
             // 
             // label2
             // 
@@ -141,6 +124,26 @@ namespace StudentAccommodatioProgram
             this.label2.TabIndex = 1;
             this.label2.Text = "Choose payment method:";
             this.label2.Click += new System.EventHandler(this.label2_Click);
+            // 
+            // btnClear
+            // 
+            this.btnClear.Location = new System.Drawing.Point(392, 524);
+            this.btnClear.Name = "btnClear";
+            this.btnClear.Size = new System.Drawing.Size(119, 39);
+            this.btnClear.TabIndex = 6;
+            this.btnClear.Text = "Clear";
+            this.btnClear.UseVisualStyleBackColor = true;
+            this.btnClear.Click += new System.EventHandler(this.btnClear_Click);
+            // 
+            // btnSubmit
+            // 
+            this.btnSubmit.Location = new System.Drawing.Point(644, 522);
+            this.btnSubmit.Name = "btnSubmit";
+            this.btnSubmit.Size = new System.Drawing.Size(128, 39);
+            this.btnSubmit.TabIndex = 5;
+            this.btnSubmit.Text = "Submit";
+            this.btnSubmit.UseVisualStyleBackColor = true;
+            this.btnSubmit.Click += new System.EventHandler(this.btnSubmit_Click);
             // 
             // label1
             // 
@@ -168,6 +171,48 @@ namespace StudentAccommodatioProgram
             this.pnlBursary.Name = "pnlBursary";
             this.pnlBursary.Size = new System.Drawing.Size(288, 213);
             this.pnlBursary.TabIndex = 7;
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Location = new System.Drawing.Point(11, 164);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(57, 13);
+            this.label12.TabIndex = 11;
+            this.label12.Text = "Cellphone:";
+            // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label14.Location = new System.Drawing.Point(64, 5);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(169, 20);
+            this.label14.TabIndex = 11;
+            this.label14.Text = "BURSARY PAYMENT";
+            // 
+            // txtCellphone
+            // 
+            this.txtCellphone.Location = new System.Drawing.Point(136, 157);
+            this.txtCellphone.Name = "txtCellphone";
+            this.txtCellphone.Size = new System.Drawing.Size(126, 20);
+            this.txtCellphone.TabIndex = 10;
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Location = new System.Drawing.Point(9, 50);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(71, 13);
+            this.label11.TabIndex = 9;
+            this.label11.Text = "Bursar Name:";
+            // 
+            // txtBursar
+            // 
+            this.txtBursar.Location = new System.Drawing.Point(136, 49);
+            this.txtBursar.Name = "txtBursar";
+            this.txtBursar.Size = new System.Drawing.Size(126, 20);
+            this.txtBursar.TabIndex = 8;
             // 
             // button1
             // 
@@ -226,6 +271,41 @@ namespace StudentAccommodatioProgram
             this.pnlCash.Size = new System.Drawing.Size(288, 213);
             this.pnlCash.TabIndex = 8;
             // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label15.Location = new System.Drawing.Point(68, 6);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(134, 20);
+            this.label15.TabIndex = 12;
+            this.label15.Text = "CASH PAYMENT";
+            // 
+            // txtBrowse
+            // 
+            this.txtBrowse.Location = new System.Drawing.Point(9, 73);
+            this.txtBrowse.Name = "txtBrowse";
+            this.txtBrowse.Size = new System.Drawing.Size(180, 20);
+            this.txtBrowse.TabIndex = 9;
+            // 
+            // btnBrowse
+            // 
+            this.btnBrowse.Location = new System.Drawing.Point(188, 70);
+            this.btnBrowse.Name = "btnBrowse";
+            this.btnBrowse.Size = new System.Drawing.Size(80, 23);
+            this.btnBrowse.TabIndex = 7;
+            this.btnBrowse.Text = "Browse File...";
+            this.btnBrowse.UseVisualStyleBackColor = true;
+            // 
+            // btnUpload
+            // 
+            this.btnUpload.Location = new System.Drawing.Point(97, 175);
+            this.btnUpload.Name = "btnUpload";
+            this.btnUpload.Size = new System.Drawing.Size(75, 23);
+            this.btnUpload.TabIndex = 6;
+            this.btnUpload.Text = "Upload";
+            this.btnUpload.UseVisualStyleBackColor = true;
+            // 
             // button4
             // 
             this.button4.Location = new System.Drawing.Point(144, 255);
@@ -276,6 +356,39 @@ namespace StudentAccommodatioProgram
             this.pnlEFT.Size = new System.Drawing.Size(288, 213);
             this.pnlEFT.TabIndex = 8;
             // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label13.Location = new System.Drawing.Point(77, 6);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(119, 20);
+            this.label13.TabIndex = 10;
+            this.label13.Text = "EFT PAYMENT";
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(3, 157);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(90, 13);
+            this.label10.TabIndex = 9;
+            this.label10.Text = "Account Number:";
+            // 
+            // txtAccNo
+            // 
+            this.txtAccNo.Location = new System.Drawing.Point(136, 157);
+            this.txtAccNo.Name = "txtAccNo";
+            this.txtAccNo.Size = new System.Drawing.Size(126, 20);
+            this.txtAccNo.TabIndex = 8;
+            // 
+            // txtHolder
+            // 
+            this.txtHolder.Location = new System.Drawing.Point(136, 47);
+            this.txtHolder.Name = "txtHolder";
+            this.txtHolder.Size = new System.Drawing.Size(126, 20);
+            this.txtHolder.TabIndex = 7;
+            // 
             // button5
             // 
             this.button5.Location = new System.Drawing.Point(268, 255);
@@ -319,20 +432,6 @@ namespace StudentAccommodatioProgram
             this.label9.TabIndex = 1;
             this.label9.Text = "Account Holder:";
             // 
-            // txtHolder
-            // 
-            this.txtHolder.Location = new System.Drawing.Point(136, 47);
-            this.txtHolder.Name = "txtHolder";
-            this.txtHolder.Size = new System.Drawing.Size(126, 20);
-            this.txtHolder.TabIndex = 7;
-            // 
-            // txtAccNo
-            // 
-            this.txtAccNo.Location = new System.Drawing.Point(136, 157);
-            this.txtAccNo.Name = "txtAccNo";
-            this.txtAccNo.Size = new System.Drawing.Size(126, 20);
-            this.txtAccNo.TabIndex = 8;
-            // 
             // btnBack
             // 
             this.btnBack.Location = new System.Drawing.Point(169, 524);
@@ -341,102 +440,7 @@ namespace StudentAccommodatioProgram
             this.btnBack.TabIndex = 9;
             this.btnBack.Text = "Back";
             this.btnBack.UseVisualStyleBackColor = true;
-            // 
-            // txtBursar
-            // 
-            this.txtBursar.Location = new System.Drawing.Point(136, 49);
-            this.txtBursar.Name = "txtBursar";
-            this.txtBursar.Size = new System.Drawing.Size(126, 20);
-            this.txtBursar.TabIndex = 8;
-            // 
-            // label10
-            // 
-            this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(3, 157);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(90, 13);
-            this.label10.TabIndex = 9;
-            this.label10.Text = "Account Number:";
-            // 
-            // label11
-            // 
-            this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(9, 50);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(71, 13);
-            this.label11.TabIndex = 9;
-            this.label11.Text = "Bursar Name:";
-            // 
-            // txtCellphone
-            // 
-            this.txtCellphone.Location = new System.Drawing.Point(136, 157);
-            this.txtCellphone.Name = "txtCellphone";
-            this.txtCellphone.Size = new System.Drawing.Size(126, 20);
-            this.txtCellphone.TabIndex = 10;
-            // 
-            // label12
-            // 
-            this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(11, 164);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(57, 13);
-            this.label12.TabIndex = 11;
-            this.label12.Text = "Cellphone:";
-            // 
-            // btnUpload
-            // 
-            this.btnUpload.Location = new System.Drawing.Point(97, 175);
-            this.btnUpload.Name = "btnUpload";
-            this.btnUpload.Size = new System.Drawing.Size(75, 23);
-            this.btnUpload.TabIndex = 6;
-            this.btnUpload.Text = "Upload";
-            this.btnUpload.UseVisualStyleBackColor = true;
-            // 
-            // btnBrowse
-            // 
-            this.btnBrowse.Location = new System.Drawing.Point(188, 70);
-            this.btnBrowse.Name = "btnBrowse";
-            this.btnBrowse.Size = new System.Drawing.Size(80, 23);
-            this.btnBrowse.TabIndex = 7;
-            this.btnBrowse.Text = "Browse File...";
-            this.btnBrowse.UseVisualStyleBackColor = true;
-            // 
-            // txtBrowse
-            // 
-            this.txtBrowse.Location = new System.Drawing.Point(9, 73);
-            this.txtBrowse.Name = "txtBrowse";
-            this.txtBrowse.Size = new System.Drawing.Size(180, 20);
-            this.txtBrowse.TabIndex = 9;
-            // 
-            // label13
-            // 
-            this.label13.AutoSize = true;
-            this.label13.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label13.Location = new System.Drawing.Point(77, 6);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(119, 20);
-            this.label13.TabIndex = 10;
-            this.label13.Text = "EFT PAYMENT";
-            // 
-            // label14
-            // 
-            this.label14.AutoSize = true;
-            this.label14.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label14.Location = new System.Drawing.Point(64, 5);
-            this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(169, 20);
-            this.label14.TabIndex = 11;
-            this.label14.Text = "BURSARY PAYMENT";
-            // 
-            // label15
-            // 
-            this.label15.AutoSize = true;
-            this.label15.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label15.Location = new System.Drawing.Point(68, 6);
-            this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(134, 20);
-            this.label15.TabIndex = 12;
-            this.label15.Text = "CASH PAYMENT";
+            this.btnBack.Click += new System.EventHandler(this.btnBack_Click);
             // 
             // frmPayment
             // 

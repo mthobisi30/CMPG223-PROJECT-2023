@@ -30,13 +30,13 @@ namespace StudentAccommodatioProgram
         private void InitializeComponent()
         {
             this.panel1 = new System.Windows.Forms.Panel();
-            this.label1 = new System.Windows.Forms.Label();
-            this.lblDisplay = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.cmbBoard = new System.Windows.Forms.ComboBox();
-            this.BtnNext = new System.Windows.Forms.Button();
             this.btnLogout = new System.Windows.Forms.Button();
+            this.BtnNext = new System.Windows.Forms.Button();
+            this.cmbBoard = new System.Windows.Forms.ComboBox();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.lblDisplay = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -54,41 +54,25 @@ namespace StudentAccommodatioProgram
             this.panel1.Size = new System.Drawing.Size(429, 296);
             this.panel1.TabIndex = 0;
             // 
-            // label1
+            // btnLogout
             // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(149, 14);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(128, 24);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "DASHBOARD";
+            this.btnLogout.Location = new System.Drawing.Point(251, 250);
+            this.btnLogout.Name = "btnLogout";
+            this.btnLogout.Size = new System.Drawing.Size(75, 23);
+            this.btnLogout.TabIndex = 7;
+            this.btnLogout.Text = "LogOut";
+            this.btnLogout.UseVisualStyleBackColor = true;
+            this.btnLogout.Click += new System.EventHandler(this.btnLogout_Click);
             // 
-            // lblDisplay
+            // BtnNext
             // 
-            this.lblDisplay.AutoSize = true;
-            this.lblDisplay.Location = new System.Drawing.Point(15, 90);
-            this.lblDisplay.Name = "lblDisplay";
-            this.lblDisplay.Size = new System.Drawing.Size(35, 13);
-            this.lblDisplay.TabIndex = 1;
-            this.lblDisplay.Text = "label2";
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(15, 161);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(168, 13);
-            this.label3.TabIndex = 2;
-            this.label3.Text = "What would you like to do today?:";
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(15, 228);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(0, 13);
-            this.label4.TabIndex = 3;
+            this.BtnNext.Location = new System.Drawing.Point(18, 250);
+            this.BtnNext.Name = "BtnNext";
+            this.BtnNext.Size = new System.Drawing.Size(75, 23);
+            this.BtnNext.TabIndex = 6;
+            this.BtnNext.Text = "Next";
+            this.BtnNext.UseVisualStyleBackColor = true;
+            this.BtnNext.Click += new System.EventHandler(this.BtnNext_Click);
             // 
             // cmbBoard
             // 
@@ -107,23 +91,42 @@ namespace StudentAccommodatioProgram
             this.cmbBoard.Size = new System.Drawing.Size(197, 21);
             this.cmbBoard.TabIndex = 5;
             // 
-            // BtnNext
+            // label4
             // 
-            this.BtnNext.Location = new System.Drawing.Point(18, 250);
-            this.BtnNext.Name = "BtnNext";
-            this.BtnNext.Size = new System.Drawing.Size(75, 23);
-            this.BtnNext.TabIndex = 6;
-            this.BtnNext.Text = "Next";
-            this.BtnNext.UseVisualStyleBackColor = true;
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(15, 228);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(0, 13);
+            this.label4.TabIndex = 3;
             // 
-            // btnLogout
+            // label3
             // 
-            this.btnLogout.Location = new System.Drawing.Point(251, 250);
-            this.btnLogout.Name = "btnLogout";
-            this.btnLogout.Size = new System.Drawing.Size(75, 23);
-            this.btnLogout.TabIndex = 7;
-            this.btnLogout.Text = "LogOut";
-            this.btnLogout.UseVisualStyleBackColor = true;
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(15, 161);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(168, 13);
+            this.label3.TabIndex = 2;
+            this.label3.Text = "What would you like to do today?:";
+            // 
+            // lblDisplay
+            // 
+            this.lblDisplay.AutoSize = true;
+            this.lblDisplay.Location = new System.Drawing.Point(15, 90);
+            this.lblDisplay.Name = "lblDisplay";
+            this.lblDisplay.Size = new System.Drawing.Size(35, 13);
+            this.lblDisplay.TabIndex = 1;
+            this.lblDisplay.Text = "label2";
+            this.lblDisplay.Click += new System.EventHandler(this.lblDisplay_Click);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(149, 14);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(128, 24);
+            this.label1.TabIndex = 0;
+            this.label1.Text = "DASHBOARD";
             // 
             // frmStudentDash
             // 
