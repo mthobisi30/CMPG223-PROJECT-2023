@@ -230,5 +230,10 @@ namespace StudentAccommodatioProgram
         {
 
         }
+
+        private void btnReports_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

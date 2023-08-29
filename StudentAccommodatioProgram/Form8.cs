@@ -17,16 +17,65 @@ namespace StudentAccommodatioProgram
         {
             InitializeComponent();
         }
+        string connectionString = "your_connection_string_here";
+        public int GetUserId(string userName, string lastName)
+        {
+            string query = "SELECT user_Id FROM UserTable WHERE firstName = @userName AND lastName = @lastName";
 
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                connection.Open();
+                using (SqlCommand command = new SqlCommand(query, connection))
+                {
+                    command.Parameters.AddWithValue("@firstName", userName);
+                    command.Parameters.AddWithValue("@lastName", lastName);
+                    object result = command.ExecuteScalar();
+
+                    if (result != null && result != DBNull.Value)
+                    {
+                        return Convert.ToInt32(result);
+                    }
+                }
+                connection.Close();
+            }
+            return -1;
+        }
+        public int GetAccommodationId(string accommodationName)
+        {
+            string query = "SELECT accommodation_ID FROM Accommodation WHERE accommodationName = @AccommodationName";
+
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                connection.Open();
+                using (SqlCommand command = new SqlCommand(query, connection))
+                {
+                    command.Parameters.AddWithValue("@AccommodationName", accommodationName);
+                    object result = command.ExecuteScalar();
+
+                    if (result != null && result != DBNull.Value)
+                    {
+                        return Convert.ToInt32(result);
+                    }
+                }
+                connection.Close();
+            }
+            return -1;
+        }
         private void btnSubmit_Click(object sender, EventArgs e)
         {
-            string connectionString = "your_connection_string_here";
+            
 
             string maintenanceCategory = cmbCategory.Text;
             DateTime dateLogged = dpDateLogged.Value;
             string description = txtDescription.Text;
             string accommodationName = txtName.Text;
+            frmRegisterStudent registerStudent = new frmRegisterStudent();
+            string userName = registerStudent.firstName;
+            string lastName = registerStudent.lastName;
+
             
+            int accommodationId = GetAccommodationId(accommodationName);
+            int userId = GetUserId(userName, lastName);
 
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
@@ -34,8 +83,8 @@ namespace StudentAccommodatioProgram
                 {
                     connection.Open();
 
-                    string query = "INSERT INTO Maintenance (maintenanceCategory, dateLogged, description, accommodationName) " +
-                                   "VALUES (@maintenanceCategory, @dateLogged, @description, @accommodationName)";
+                    string query = "INSERT INTO Maintenance (maintenanceCategory, dateLogged, description, accommodationName,accommodation_Id,user_Id) " +
+                                   "VALUES (@maintenanceCategory, @dateLogged, @description, @accommodationName,@accommodation_Id,@user_Id)";
 
                     using (SqlCommand command = new SqlCommand(query, connection))
                     {
@@ -43,7 +92,8 @@ namespace StudentAccommodatioProgram
                         command.Parameters.AddWithValue("@dateLogged", dateLogged);
                         command.Parameters.AddWithValue("@description", description);
                         command.Parameters.AddWithValue("@accommodationName", accommodationName);
-                        
+                        command.Parameters.AddWithValue("@user_Id", userId);
+                        command.Parameters.AddWithValue("@accommodation_Id", accommodationId);
 
                         int rowsAffected = command.ExecuteNonQuery();
 
@@ -56,6 +106,7 @@ namespace StudentAccommodatioProgram
                             MessageBox.Show("Failed to add maintenance entry.");
                         }
                     }
+                    connection.Close();
                 }
                 catch (Exception ex)
                 {

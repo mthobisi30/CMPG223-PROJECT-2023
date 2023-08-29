@@ -50,6 +50,7 @@ namespace StudentAccommodatioProgram
         private void btnOK_Click(object sender, EventArgs e)
         {
             frmAgent agent = new frmAgent();
+            agent.Show();
         }
     }
 }

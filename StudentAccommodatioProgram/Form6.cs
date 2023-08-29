@@ -22,9 +22,55 @@ namespace StudentAccommodatioProgram
 
 
         }
+        string connectionString = "YourConnectionStringHere";
+        
+        public int GetAccommodationId(string accommodationName)
+        {
+            string query = "SELECT accommodation_ID FROM Accommodation WHERE accommodationName = @AccommodationName";
+
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                connection.Open();
+                using (SqlCommand command = new SqlCommand(query, connection))
+                {
+                    command.Parameters.AddWithValue("@AccommodationName", accommodationName);
+                    object result = command.ExecuteScalar();
+
+                    if (result != null && result != DBNull.Value)
+                    {
+                        return Convert.ToInt32(result);
+                    }
+                }
+                connection.Close();
+            }
+            return -1;
+        }
+        public int GetUserId(string userName,string lastName)
+        {
+            string query = "SELECT user_Id FROM UserTable WHERE firstName = @userName AND lastName = @lastName";
+
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                connection.Open();
+                using (SqlCommand command = new SqlCommand(query, connection))
+                {
+                    command.Parameters.AddWithValue("@firstName", userName);
+                    command.Parameters.AddWithValue("@lastName", lastName);
+                    object result = command.ExecuteScalar();
+
+                    if (result != null && result != DBNull.Value)
+                    {
+                        return Convert.ToInt32(result);
+                    }
+                }
+                connection.Close();
+            }
+            return -1;
+        }
+
         private int GetMostRecentPaymentID()
         {
-            string connectionString = "YourConnectionStringHere";
+            
             int paymentID = -1;
 
             using (SqlConnection connection = new SqlConnection(connectionString))
@@ -51,21 +97,29 @@ namespace StudentAccommodatioProgram
         }
         private void InsertPaymentData(decimal amount,  string paymentType)
         {
-            string connectionString = "YourConnectionStringHere";
+            frmAccommodation Accommodation = new frmAccommodation();
+            string AccommodationName = Accommodation.selectedAccommodationName;
+            int accommodationID = GetAccommodationId(AccommodationName);
+
+            frmRegisterStudent registerStudent = new frmRegisterStudent();
+            string userName = registerStudent.firstName;
+            string lastName = registerStudent.lastName;
+
+            int userID = GetUserId(userName, lastName);
 
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
                 connection.Open();
 
-                string query = "INSERT INTO Payment (amount, paymentDate, paymentType) " +
-                               "VALUES (@Amount, GETDATE(), @PaymentType)";
+                string query = "INSERT INTO Payment (amount, paymentDate, paymentType,accommodation_Id,user_Id) " +
+                               "VALUES (@Amount, GETDATE(), @PaymentType,@accommodation_Id,@user_Id)";
 
                 using (SqlCommand command = new SqlCommand(query, connection))
                 {
                     command.Parameters.AddWithValue("@Amount", amount);
                     command.Parameters.AddWithValue("@PaymentType", paymentType);
-                    
-
+                    command.Parameters.AddWithValue("@accommodation_Id", accommodationID);
+                    command.Parameters.AddWithValue("@user_Id", userID);
                     int rowsAffected = command.ExecuteNonQuery();
                     if (rowsAffected > 0)
                     {
@@ -81,13 +135,13 @@ namespace StudentAccommodatioProgram
 
         private void InsertEFTData(int paymentID, string bankName, string accountHolder, string accountNumber)
         {
-            string connectionString = "YourConnectionStringHere";
+            
 
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
                 connection.Open();
 
-                string query = "INSERT INTO EFT (payment_ID, bankName, accountHolder, accountNumber) " +
+                string query = "INSERT INTO EFT (payment_Id, bankName, accountHolder, accountNumber) " +
                                "VALUES (@PaymentID, @BankName, @AccountHolder, @AccountNumber)";
 
                 using (SqlCommand command = new SqlCommand(query, connection))
@@ -118,7 +172,7 @@ namespace StudentAccommodatioProgram
             {
                 connection.Open();
 
-                string query = "INSERT INTO Cash (payment_ID, proofofPayment) " +
+                string query = "INSERT INTO Cash (payment_Id, proofofPayment) " +
                                "VALUES (@PaymentID, @ProofOfPayment)";
 
                 using (SqlCommand command = new SqlCommand(query, connection))
@@ -147,7 +201,7 @@ namespace StudentAccommodatioProgram
             {
                 connection.Open();
 
-                string query = "INSERT INTO Bursary (payment_ID, bursaryName, email, cellphone) " +
+                string query = "INSERT INTO Bursary (payment_Id, bursaryName, email, cellphone) " +
                                "VALUES (@PaymentID, @BursaryName, @Email, @Cellphone)";
 
                 using (SqlCommand command = new SqlCommand(query, connection))

@@ -18,9 +18,30 @@ namespace StudentAccommodatioProgram
             InitializeComponent();
         }
         string connectionString = "YourConnectionStringHere";
+
         public string selectedAccommodationName { get; set; }
 
-  
+        public int GetAccommodationId(string accommodationName)
+        {
+            string query = "SELECT accommodation_ID FROM Accommodation WHERE accommodationName = @AccommodationName";
+
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                connection.Open();
+                using (SqlCommand command = new SqlCommand(query, connection))
+                {
+                    command.Parameters.AddWithValue("@AccommodationName", accommodationName);
+                    object result = command.ExecuteScalar();
+
+                    if (result != null && result != DBNull.Value)
+                    {
+                        return Convert.ToInt32(result);
+                    }
+                }
+                connection.Close();
+            }
+            return -1;
+        }
 
         private void rdHome_CheckedChanged(object sender, EventArgs e)
         {
@@ -31,7 +52,7 @@ namespace StudentAccommodatioProgram
             {
                 connection.Open();
 
-                int accommodationId = 1; // Replace with the actual accommodation ID you want to retrieve specs for
+                int accommodationId = GetAccommodationId(rdHome.Text); // Replace with the actual accommodation ID you want to retrieve specs for
 
                 string query = "SELECT distanceToCampus, gender, parking, Quantity, LAN, description FROM AccommodationSpecs WHERE accommodation_ID = @AccommodationId";
 
@@ -82,7 +103,7 @@ namespace StudentAccommodatioProgram
             {
                 connection.Open();
 
-                int accommodationId = 1; // Replace with the actual accommodation ID you want to retrieve specs for
+                int accommodationId = GetAccommodationId(rdLofts.Text); // Replace with the actual accommodation ID you want to retrieve specs for
 
                 string query = "SELECT distanceToCampus, gender, parking, Quantity, LAN, description FROM AccommodationSpecs WHERE accommodation_ID = @AccommodationId";
 
@@ -130,7 +151,7 @@ namespace StudentAccommodatioProgram
             {
                 connection.Open();
 
-                int accommodationId = 1; // Replace with the actual accommodation ID you want to retrieve specs for
+                int accommodationId = GetAccommodationId(rdHouse.Text); // Replace with the actual accommodation ID you want to retrieve specs for
 
                 string query = "SELECT distanceToCampus, gender, parking, Quantity, LAN, description FROM AccommodationSpecs WHERE accommodation_ID = @AccommodationId";
 
@@ -178,7 +199,7 @@ namespace StudentAccommodatioProgram
             {
                 connection.Open();
 
-                int accommodationId = 1; // Replace with the actual accommodation ID you want to retrieve specs for
+                int accommodationId = GetAccommodationId(rdFlats.Text); // Replace with the actual accommodation ID you want to retrieve specs for
 
                 string query = "SELECT distanceToCampus, gender, parking, Quantity, LAN, description FROM AccommodationSpecs WHERE accommodation_ID = @AccommodationId";
 
@@ -228,7 +249,7 @@ namespace StudentAccommodatioProgram
             {
                 connection.Open();
 
-                int accommodationId = 1; // Replace with the actual accommodation ID you want to retrieve specs for
+                int accommodationId = GetAccommodationId(rdApartments.Text); // Replace with the actual accommodation ID you want to retrieve specs for
 
                 string query = "SELECT distanceToCampus, gender, parking, Quantity, LAN, description FROM AccommodationSpecs WHERE accommodation_ID = @AccommodationId";
 

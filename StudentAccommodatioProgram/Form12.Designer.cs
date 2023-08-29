@@ -65,6 +65,7 @@ namespace StudentAccommodatioProgram
             this.btnReports.TabIndex = 7;
             this.btnReports.Text = "Generate reports";
             this.btnReports.UseVisualStyleBackColor = true;
+            this.btnReports.Click += new System.EventHandler(this.btnReports_Click);
             // 
             // btnLease
             // 

@@ -17,6 +17,8 @@ namespace StudentAccommodatioProgram
         {
             InitializeComponent();
         }
+        public string firstName { get; set; }
+        public string lastName { get; set; }
         private string GeneratePassword(string firstName, string lastName)
         {
             if (string.IsNullOrEmpty(firstName) || string.IsNullOrEmpty(lastName))
@@ -41,8 +43,8 @@ namespace StudentAccommodatioProgram
         {
             errorProvider1.Clear();
             string connectionString = "your_connection_string_here"; // Replace with your actual connection string
-            string firstName = txtFName.Text;
-            string lastName = txtLName.Text;
+            firstName = txtFName.Text;
+            lastName = txtLName.Text;
             string email = txtMail.Text;
             string course = txtCourse.Text;
             string Cell = txtPhone.Text;
@@ -92,9 +94,6 @@ namespace StudentAccommodatioProgram
                     command.Parameters.AddWithValue("@Password", Password);
                     command.ExecuteNonQuery();
                 }
-
-
-
            
                 connection.Close();
             }

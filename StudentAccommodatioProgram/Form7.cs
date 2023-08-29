@@ -21,6 +21,50 @@ namespace StudentAccommodatioProgram
             DisplayLeaseAgreement();
         }
         private PrintDocument printDocument = new PrintDocument();
+        string connectionString = "YourConnectionStringHere";
+        public int GetUserId(string userName, string lastName)
+        {
+            string query = "SELECT user_Id FROM UserTable WHERE firstName = @userName AND lastName = @lastName";
+
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                connection.Open();
+                using (SqlCommand command = new SqlCommand(query, connection))
+                {
+                    command.Parameters.AddWithValue("@firstName", userName);
+                    command.Parameters.AddWithValue("@lastName", lastName);
+                    object result = command.ExecuteScalar();
+
+                    if (result != null && result != DBNull.Value)
+                    {
+                        return Convert.ToInt32(result);
+                    }
+                }
+                connection.Close();
+            }
+            return -1;
+        }
+        public int GetAccommodationId(string accommodationName)
+        {
+            string query = "SELECT accommodation_ID FROM Accommodation WHERE accommodationName = @AccommodationName";
+
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                connection.Open();
+                using (SqlCommand command = new SqlCommand(query, connection))
+                {
+                    command.Parameters.AddWithValue("@AccommodationName", accommodationName);
+                    object result = command.ExecuteScalar();
+
+                    if (result != null && result != DBNull.Value)
+                    {
+                        return Convert.ToInt32(result);
+                    }
+                }
+                connection.Close();
+            }
+            return -1;
+        }
         private void DisplayLeaseAgreement()
         {
             
@@ -99,14 +143,22 @@ namespace StudentAccommodatioProgram
         private void InsertLeaseAgreement(DateTime startDate, DateTime endDate)
         {
             string status = chkSigned.Checked ? "Active" : "Inactive";
+            frmRegisterStudent registerStudent = new frmRegisterStudent();
+            string userName = registerStudent.firstName;
+            string lastName = registerStudent.lastName;
 
+            frmAccommodation accommodationForm = new frmAccommodation();
+            string accommodationName = accommodationForm.selectedAccommodationName;
+
+            int accommodationId = GetAccommodationId(accommodationName);
+            int userID = GetUserId(userName, lastName);
             // Replace these with your actual database connection and query execution logic
             SqlConnection connection = new SqlConnection("your_connection_string_here");
             connection.Open();
 
             // Insert query
-            string query = "INSERT INTO LeaseAgreement (StartDate, EndDate, Status) " +
-                           "VALUES (@StartDate, @EndDate, @Status)";
+            string query = "INSERT INTO LeaseAgreement (StartDate, EndDate, Status,user_Id,accommodation_Id) " +
+                           "VALUES (@StartDate, @EndDate, @Status,@user_Id,@accommodation_Id)";
 
             SqlCommand command = new SqlCommand(query, connection);
 
@@ -114,7 +166,8 @@ namespace StudentAccommodatioProgram
             command.Parameters.AddWithValue("@StartDate", startDate);
             command.Parameters.AddWithValue("@EndDate", endDate);
             command.Parameters.AddWithValue("@Status", status); // Assuming default status is "Active"
-
+            command.Parameters.AddWithValue("@user_Id", userID);
+            command.Parameters.AddWithValue("@accommodation_Id", accommodationId);
             // Execute the query
             command.ExecuteNonQuery();
 
@@ -145,11 +198,6 @@ namespace StudentAccommodatioProgram
 
             e.HasMorePages = false; // Only one page for this example
         }
-
-
-
-
-
 
 
         private void btnSubmit_Click(object sender, EventArgs e)

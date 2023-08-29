@@ -33,11 +33,12 @@ namespace StudentAccommodatioProgram
             {
                 errorProvider1.SetError(txtPassword, "Password is required.");
             }
+
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
                 connection.Open();
 
-                string selectQuery = "SELECT CourseName, CompanyName FROM UserTable WHERE Email = @Email AND Password = @Password";
+                string selectQuery = "SELECT CourseName, CompanyName FROM UserTable WHERE Email = @email AND password = @Password";
                 using (SqlCommand command = new SqlCommand(selectQuery, connection))
                 {
                     command.Parameters.AddWithValue("@Email", UserName);
@@ -68,30 +69,15 @@ namespace StudentAccommodatioProgram
                                 Agentform.Show();
                             }
                         }
-
-
                     }
                     else
                     {
                         MessageBox.Show("Invalid login credentials.");
                     }
-
-
-
-                   
-
-
-
                 }
+
                 connection.Close();
             }
-
-
-
-
-
-
-
         }
     }
 }
