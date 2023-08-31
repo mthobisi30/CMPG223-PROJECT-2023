@@ -26,7 +26,7 @@ namespace StudentAccommodatioProgram
         
         public int GetAccommodationId(string accommodationName)
         {
-            string query = "SELECT accommodation_ID FROM Accommodation WHERE accommodationName = @AccommodationName";
+            string query = "SELECT accommodation_ID FROM AccommodationTable WHERE accommodationName = @AccommodationName";
 
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
@@ -47,7 +47,7 @@ namespace StudentAccommodatioProgram
         }
         public int GetUserId(string userName,string lastName)
         {
-            string query = "SELECT user_Id FROM UserTable WHERE firstName = @userName AND lastName = @lastName";
+            string query = "SELECT user_ID FROM UserTable WHERE firstName = @userName AND lastName = @lastName";
 
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
@@ -77,7 +77,7 @@ namespace StudentAccommodatioProgram
             {
                 connection.Open();
 
-                string query = "SELECT TOP 1 payment_ID FROM Payment ORDER BY paymentDate DESC";
+                string query = "SELECT TOP 1 payment_ID FROM PaymentTable ORDER BY paymentDate DESC";
 
                 using (SqlCommand command = new SqlCommand(query, connection))
                 {
@@ -111,7 +111,7 @@ namespace StudentAccommodatioProgram
             {
                 connection.Open();
 
-                string query = "INSERT INTO Payment (amount, paymentDate, paymentType,accommodation_Id,user_Id) " +
+                string query = "INSERT INTO PaymentTable (amount, paymentDate, paymentType,accommodation_ID,user_ID) " +
                                "VALUES (@Amount, GETDATE(), @PaymentType,@accommodation_Id,@user_Id)";
 
                 using (SqlCommand command = new SqlCommand(query, connection))
@@ -130,6 +130,7 @@ namespace StudentAccommodatioProgram
                         MessageBox.Show("Failed to insert payment.", "Error");
                     }
                 }
+                connection.Close();
             }
         }
 
@@ -141,7 +142,7 @@ namespace StudentAccommodatioProgram
             {
                 connection.Open();
 
-                string query = "INSERT INTO EFT (payment_Id, bankName, accountHolder, accountNumber) " +
+                string query = "INSERT INTO EFTTable (payment_ID, bankName, accountHolder, accountNumber) " +
                                "VALUES (@PaymentID, @BankName, @AccountHolder, @AccountNumber)";
 
                 using (SqlCommand command = new SqlCommand(query, connection))
@@ -161,18 +162,19 @@ namespace StudentAccommodatioProgram
                         MessageBox.Show("Failed to insert EFT payment.", "Error");
                     }
                 }
+                connection.Close();
             }
         }
 
         private void InsertCashData(int paymentID, string proofofPayment)
         {
-            string connectionString = "YourConnectionStringHere";
+            
 
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
                 connection.Open();
 
-                string query = "INSERT INTO Cash (payment_Id, proofofPayment) " +
+                string query = "INSERT INTO CashTable (payment_ID, proofofPayment) " +
                                "VALUES (@PaymentID, @ProofOfPayment)";
 
                 using (SqlCommand command = new SqlCommand(query, connection))
@@ -190,6 +192,7 @@ namespace StudentAccommodatioProgram
                         MessageBox.Show("Failed to insert Cash payment.", "Error");
                     }
                 }
+                connection.Close();
             }
         }
 
@@ -201,7 +204,7 @@ namespace StudentAccommodatioProgram
             {
                 connection.Open();
 
-                string query = "INSERT INTO Bursary (payment_Id, bursaryName, email, cellphone) " +
+                string query = "INSERT INTO BursaryTable (payment_ID, bursaryName, email, cellphone) " +
                                "VALUES (@PaymentID, @BursaryName, @Email, @Cellphone)";
 
                 using (SqlCommand command = new SqlCommand(query, connection))
@@ -221,6 +224,7 @@ namespace StudentAccommodatioProgram
                         MessageBox.Show("Failed to insert Bursary payment.", "Error");
                     }
                 }
+                connection.Close();
             }
         }
 

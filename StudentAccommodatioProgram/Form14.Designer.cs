@@ -35,7 +35,6 @@ namespace StudentAccommodatioProgram
             this.btnAll = new System.Windows.Forms.Button();
             this.dataGridViewReports = new System.Windows.Forms.DataGridView();
             this.btnSummary = new System.Windows.Forms.Button();
-            this.btnFilter = new System.Windows.Forms.Button();
             this.btnReset = new System.Windows.Forms.Button();
             this.btnClose = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewReports)).BeginInit();
@@ -57,8 +56,7 @@ namespace StudentAccommodatioProgram
             this.cmbReports.Items.AddRange(new object[] {
             "Accommodations",
             "Payments",
-            "Maintenance requests",
-            "Accommodation Availability"});
+            "Maintenance requests"});
             this.cmbReports.Location = new System.Drawing.Point(13, 86);
             this.cmbReports.Name = "cmbReports";
             this.cmbReports.Size = new System.Drawing.Size(258, 21);
@@ -75,7 +73,7 @@ namespace StudentAccommodatioProgram
             // 
             // btnAll
             // 
-            this.btnAll.Location = new System.Drawing.Point(545, 199);
+            this.btnAll.Location = new System.Drawing.Point(545, 229);
             this.btnAll.Name = "btnAll";
             this.btnAll.Size = new System.Drawing.Size(107, 23);
             this.btnAll.TabIndex = 3;
@@ -93,21 +91,13 @@ namespace StudentAccommodatioProgram
             // 
             // btnSummary
             // 
-            this.btnSummary.Location = new System.Drawing.Point(545, 242);
+            this.btnSummary.Location = new System.Drawing.Point(545, 277);
             this.btnSummary.Name = "btnSummary";
             this.btnSummary.Size = new System.Drawing.Size(107, 23);
             this.btnSummary.TabIndex = 5;
             this.btnSummary.Text = "Summary";
             this.btnSummary.UseVisualStyleBackColor = true;
-            // 
-            // btnFilter
-            // 
-            this.btnFilter.Location = new System.Drawing.Point(545, 287);
-            this.btnFilter.Name = "btnFilter";
-            this.btnFilter.Size = new System.Drawing.Size(107, 23);
-            this.btnFilter.TabIndex = 6;
-            this.btnFilter.Text = "Special Filtering";
-            this.btnFilter.UseVisualStyleBackColor = true;
+            this.btnSummary.Click += new System.EventHandler(this.btnSummary_Click);
             // 
             // btnReset
             // 
@@ -117,6 +107,7 @@ namespace StudentAccommodatioProgram
             this.btnReset.TabIndex = 7;
             this.btnReset.Text = "Reset";
             this.btnReset.UseVisualStyleBackColor = true;
+            this.btnReset.Click += new System.EventHandler(this.btnReset_Click);
             // 
             // btnClose
             // 
@@ -134,7 +125,6 @@ namespace StudentAccommodatioProgram
             this.ClientSize = new System.Drawing.Size(670, 450);
             this.Controls.Add(this.btnClose);
             this.Controls.Add(this.btnReset);
-            this.Controls.Add(this.btnFilter);
             this.Controls.Add(this.btnSummary);
             this.Controls.Add(this.dataGridViewReports);
             this.Controls.Add(this.btnAll);
@@ -157,7 +147,6 @@ namespace StudentAccommodatioProgram
         private System.Windows.Forms.Button btnAll;
         private System.Windows.Forms.DataGridView dataGridViewReports;
         private System.Windows.Forms.Button btnSummary;
-        private System.Windows.Forms.Button btnFilter;
         private System.Windows.Forms.Button btnReset;
         private System.Windows.Forms.Button btnClose;
     }

@@ -20,7 +20,7 @@ namespace StudentAccommodatioProgram
         string connectionString = "your_connection_string_here";
         public int GetUserId(string userName, string lastName)
         {
-            string query = "SELECT user_Id FROM UserTable WHERE firstName = @userName AND lastName = @lastName";
+            string query = "SELECT user_ID FROM UserTable WHERE firstName = @userName AND lastName = @lastName";
 
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
@@ -42,7 +42,7 @@ namespace StudentAccommodatioProgram
         }
         public int GetAccommodationId(string accommodationName)
         {
-            string query = "SELECT accommodation_ID FROM Accommodation WHERE accommodationName = @AccommodationName";
+            string query = "SELECT accommodation_ID FROM AccommodationTable WHERE accommodationName = @AccommodationName";
 
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
@@ -83,7 +83,7 @@ namespace StudentAccommodatioProgram
                 {
                     connection.Open();
 
-                    string query = "INSERT INTO Maintenance (maintenanceCategory, dateLogged, description, accommodationName,accommodation_Id,user_Id) " +
+                    string query = "INSERT INTO MaintenanceTable (maintenanceCategory, dateLogged, description, accommodationName,accommodation_ID,user_ID) " +
                                    "VALUES (@maintenanceCategory, @dateLogged, @description, @accommodationName,@accommodation_Id,@user_Id)";
 
                     using (SqlCommand command = new SqlCommand(query, connection))

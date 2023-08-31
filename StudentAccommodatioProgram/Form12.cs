@@ -41,7 +41,7 @@ namespace StudentAccommodatioProgram
             {
                 connection.Open();
 
-                string query = "INSERT INTO Accommodation (Agent_ID, AccommodationName, Location, RentAmount) " +
+                string query = "INSERT INTO AccommodationTable (Agent_ID, accommodationName, location, rentAmount) " +
                                "VALUES (@AgentID, @AccommodationName, @Location, @RentAmount)";
                 using (SqlCommand command = new SqlCommand(query, connection))
                 {
@@ -61,7 +61,7 @@ namespace StudentAccommodatioProgram
             {
                 connection.Open();
 
-                string query = "INSERT INTO AccommodationSpecs (Accommodation_ID, DistanceToCampus, Gender, Parking, Quantity, LAN, Description) " +
+                string query = "INSERT INTO AccommodationSpecsTable (accommodation_ID, distanceToCampus, gender, parking, Quantity, LAN, description) " +
                                "VALUES (@AccommodationID, @DistanceToCampus, @Gender, @Parking, @Quantity, @LAN, @Description)";
                 using (SqlCommand command = new SqlCommand(query, connection))
                 {
@@ -108,7 +108,7 @@ namespace StudentAccommodatioProgram
             {
                 connection.Open();
 
-                string query = "SELECT TOP 1 Accommodation_ID FROM Accommodation ORDER BY Accommodation_ID DESC";
+                string query = "SELECT TOP 1 accommodation_ID FROM AccommodationTable ORDER BY accommodation_ID DESC";
                 using (SqlCommand command = new SqlCommand(query, connection))
                 {
                     object result = command.ExecuteScalar();
@@ -127,7 +127,7 @@ namespace StudentAccommodatioProgram
             {
                 connection.Open();
 
-                string query = "DELETE FROM Accommodation WHERE AccommodationName = @AccommodationName";
+                string query = "DELETE FROM accommodationTable WHERE accommodationName = @AccommodationName";
                 using (SqlCommand command = new SqlCommand(query, connection))
                 {
                     command.Parameters.AddWithValue("@AccommodationName", accommodationName);
@@ -143,7 +143,7 @@ namespace StudentAccommodatioProgram
             {
                 connection.Open();
 
-                string updateQuery = "UPDATE AccommodationSpecs SET AvailableSpots = @NewAvailableSpots WHERE AccommodationID = @AccommodationID";
+                string updateQuery = "UPDATE AccommodationSpecsTable SET AvailableSpots = @NewAvailableSpots WHERE accommodation_ID = @AccommodationID";
 
                 using (SqlCommand command = new SqlCommand(updateQuery, connection))
                 {
@@ -163,6 +163,20 @@ namespace StudentAccommodatioProgram
                 }
             }
         }
+        private void LoadLeaseAgreements(string connectionString)
+        {
+            string query = "SELECT lease_ID, accommodation_ID, startDate, endDate, status, approved FROM LeaseAgreementTable";
+
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                connection.Open();
+                SqlDataAdapter adapter = new SqlDataAdapter(query, connection);
+                DataTable dataTable = new DataTable();
+                adapter.Fill(dataTable);
+                dataGridViewAccommodation.DataSource = dataTable;
+            }
+        }
+
         private void btnAdd_Click(object sender, EventArgs e)
         {
             frmAdd frmAdd = new frmAdd();
@@ -228,12 +242,47 @@ namespace StudentAccommodatioProgram
 
         private void btnLease_Click(object sender, EventArgs e)
         {
+            LoadLeaseAgreements(connection);
 
         }
 
         private void btnReports_Click(object sender, EventArgs e)
         {
+            frmReports frmReports = new frmReports();
+            frmReports.Show();
+        }
+        private void UpdateLeaseAgreementApproval(int leaseId, bool approved,string connectionString)
+        {
+            string query = "UPDATE LeaseAgreementTable SET approved = @Approved WHERE lease_ID = @LeaseId";
 
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                connection.Open();
+                using (SqlCommand command = new SqlCommand(query, connection))
+                {
+                    command.Parameters.AddWithValue("@Approved", approved);
+                    command.Parameters.AddWithValue("@LeaseId", leaseId);
+                    command.ExecuteNonQuery();
+                }
+            }
+        }
+    
+        private void dataGridViewAccommodation_CellValueChanged(object sender, DataGridViewCellEventArgs e)
+        {
+            int rowIndex = e.RowIndex;
+            DataGridViewRow row = dataGridViewAccommodation.Rows[rowIndex];
+
+            int leaseId = Convert.ToInt32(row.Cells["lease_ID"].Value);
+            bool approved = Convert.ToBoolean(row.Cells["approved"].Value);
+
+            UpdateLeaseAgreementApproval(leaseId, approved,connection);
+            MessageBox.Show("Approved successfully!");
+        }
+
+        private void btnClose_Click(object sender, EventArgs e)
+        {
+            frmLogin login = new frmLogin();
+            login.Show();
         }
     }
 }

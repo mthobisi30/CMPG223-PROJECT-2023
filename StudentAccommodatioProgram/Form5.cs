@@ -23,7 +23,7 @@ namespace StudentAccommodatioProgram
 
         public int GetAccommodationId(string accommodationName)
         {
-            string query = "SELECT accommodation_ID FROM Accommodation WHERE accommodationName = @AccommodationName";
+            string query = "SELECT accommodation_ID FROM AccommodationTable WHERE accommodationName = @AccommodationName";
 
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
@@ -54,7 +54,7 @@ namespace StudentAccommodatioProgram
 
                 int accommodationId = GetAccommodationId(rdHome.Text); // Replace with the actual accommodation ID you want to retrieve specs for
 
-                string query = "SELECT distanceToCampus, gender, parking, Quantity, LAN, description FROM AccommodationSpecs WHERE accommodation_ID = @AccommodationId";
+                string query = "SELECT distanceToCampus, gender, parking, Quantity, LAN, description FROM AccommodationSpecsTable WHERE accommodation_ID = @AccommodationId";
 
                 using (SqlCommand command = new SqlCommand(query, connection))
                 {
@@ -105,7 +105,7 @@ namespace StudentAccommodatioProgram
 
                 int accommodationId = GetAccommodationId(rdLofts.Text); // Replace with the actual accommodation ID you want to retrieve specs for
 
-                string query = "SELECT distanceToCampus, gender, parking, Quantity, LAN, description FROM AccommodationSpecs WHERE accommodation_ID = @AccommodationId";
+                string query = "SELECT distanceToCampus, gender, parking, Quantity, LAN, description FROM AccommodationSpecsTable WHERE accommodation_ID = @AccommodationId";
 
                 using (SqlCommand command = new SqlCommand(query, connection))
                 {
@@ -153,7 +153,7 @@ namespace StudentAccommodatioProgram
 
                 int accommodationId = GetAccommodationId(rdHouse.Text); // Replace with the actual accommodation ID you want to retrieve specs for
 
-                string query = "SELECT distanceToCampus, gender, parking, Quantity, LAN, description FROM AccommodationSpecs WHERE accommodation_ID = @AccommodationId";
+                string query = "SELECT distanceToCampus, gender, parking, Quantity, LAN, description FROM AccommodationSpecsTable WHERE accommodation_ID = @AccommodationId";
 
                 using (SqlCommand command = new SqlCommand(query, connection))
                 {
@@ -201,7 +201,7 @@ namespace StudentAccommodatioProgram
 
                 int accommodationId = GetAccommodationId(rdFlats.Text); // Replace with the actual accommodation ID you want to retrieve specs for
 
-                string query = "SELECT distanceToCampus, gender, parking, Quantity, LAN, description FROM AccommodationSpecs WHERE accommodation_ID = @AccommodationId";
+                string query = "SELECT distanceToCampus, gender, parking, Quantity, LAN, description FROM AccommodationSpecsTable WHERE accommodation_ID = @AccommodationId";
 
                 using (SqlCommand command = new SqlCommand(query, connection))
                 {
@@ -251,7 +251,7 @@ namespace StudentAccommodatioProgram
 
                 int accommodationId = GetAccommodationId(rdApartments.Text); // Replace with the actual accommodation ID you want to retrieve specs for
 
-                string query = "SELECT distanceToCampus, gender, parking, Quantity, LAN, description FROM AccommodationSpecs WHERE accommodation_ID = @AccommodationId";
+                string query = "SELECT distanceToCampus, gender, parking, Quantity, LAN, description FROM AccommodationSpecsTable WHERE accommodation_ID = @AccommodationId";
 
                 using (SqlCommand command = new SqlCommand(query, connection))
                 {

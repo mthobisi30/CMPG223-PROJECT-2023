@@ -23,9 +23,14 @@ namespace StudentAccommodatioProgram
         private void LoadImages()
         {
             // Load your images and add them to the images list
-            images.Add(Properties.Resources.Image1);
-            images.Add(Properties.Resources.Image2);
-            images.Add(Properties.Resources.Image3);
+            images.Add(Properties.Resources.image1);
+            images.Add(Properties.Resources.image2);
+            images.Add(Properties.Resources.image3);
+            images.Add(Properties.Resources.image4);
+            images.Add(Properties.Resources.image5);
+            images.Add(Properties.Resources.image6);
+            images.Add(Properties.Resources.image7);
+           
             // Add more images as needed
         }
         private void UpdatePictureBox()

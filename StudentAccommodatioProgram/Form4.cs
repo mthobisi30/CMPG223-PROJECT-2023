@@ -38,7 +38,7 @@ namespace StudentAccommodatioProgram
             {
                 connection.Open();
 
-                string selectQuery = "SELECT CourseName, CompanyName FROM UserTable WHERE Email = @email AND password = @Password";
+                string selectQuery = "SELECT courseName, companyName FROM UserTable WHERE email = @Email AND password = @Password";
                 using (SqlCommand command = new SqlCommand(selectQuery, connection))
                 {
                     command.Parameters.AddWithValue("@Email", UserName);
@@ -50,8 +50,8 @@ namespace StudentAccommodatioProgram
                         SqlDataReader reader = command.ExecuteReader();
                         if (reader.Read())
                         {
-                            string courseName = reader["CourseName"].ToString();
-                            string companyName = reader["CompanyName"].ToString();
+                            string courseName = reader["courseName"].ToString();
+                            string companyName = reader["companyName"].ToString();
 
                             if (!string.IsNullOrEmpty(courseName))
                             {

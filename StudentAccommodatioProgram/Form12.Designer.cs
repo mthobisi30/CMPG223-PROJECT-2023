@@ -85,6 +85,7 @@ namespace StudentAccommodatioProgram
             this.btnClose.TabIndex = 5;
             this.btnClose.Text = "Logout";
             this.btnClose.UseVisualStyleBackColor = true;
+            this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
             // 
             // btnUpdate
             // 
@@ -123,6 +124,7 @@ namespace StudentAccommodatioProgram
             this.dataGridViewAccommodation.Name = "dataGridViewAccommodation";
             this.dataGridViewAccommodation.Size = new System.Drawing.Size(413, 399);
             this.dataGridViewAccommodation.TabIndex = 1;
+            this.dataGridViewAccommodation.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewAccommodation_CellValueChanged);
             // 
             // label1
             // 

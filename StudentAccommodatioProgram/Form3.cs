@@ -88,7 +88,7 @@ namespace StudentAccommodatioProgram
                 {
                     command.Parameters.AddWithValue("@FirstName", firstName);
                     command.Parameters.AddWithValue("@lastName", lastName);
-                    command.Parameters.AddWithValue("@CourseName", course);
+                    command.Parameters.AddWithValue("@courseName", course);
                     command.Parameters.AddWithValue("@Email", email);
                     command.Parameters.AddWithValue("@Cellphone", Cell);
                     command.Parameters.AddWithValue("@Password", Password);

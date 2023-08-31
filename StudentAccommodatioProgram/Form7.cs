@@ -24,7 +24,7 @@ namespace StudentAccommodatioProgram
         string connectionString = "YourConnectionStringHere";
         public int GetUserId(string userName, string lastName)
         {
-            string query = "SELECT user_Id FROM UserTable WHERE firstName = @userName AND lastName = @lastName";
+            string query = "SELECT user_ID FROM UserTable WHERE firstName = @userName AND lastName = @lastName";
 
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
@@ -46,7 +46,7 @@ namespace StudentAccommodatioProgram
         }
         public int GetAccommodationId(string accommodationName)
         {
-            string query = "SELECT accommodation_ID FROM Accommodation WHERE accommodationName = @AccommodationName";
+            string query = "SELECT accommodation_ID FROM AccommodationTable WHERE accommodationName = @AccommodationName";
 
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
@@ -103,7 +103,7 @@ namespace StudentAccommodatioProgram
             using (SqlConnection connection = new SqlConnection("YourConnectionStringHere"))
             {
                 connection.Open();
-                string query = "SELECT rentAmount FROM Accommodation WHERE accommodationName = @AccommodationName";
+                string query = "SELECT rentAmount FROM AccommodationTable WHERE accommodationName = @AccommodationName";
                 using (SqlCommand command = new SqlCommand(query, connection))
                 {
                     command.Parameters.AddWithValue("@AccommodationName", accommodationName);
@@ -117,7 +117,7 @@ namespace StudentAccommodatioProgram
             using (SqlConnection connection = new SqlConnection("YourConnectionStringHere"))
             {
                 connection.Open();
-                string query = "SELECT contractPeriod FROM Accommodation WHERE accommodationName = @AccommodationName";
+                string query = "SELECT contractPeriod FROM AccommodationTable WHERE accommodationName = @AccommodationName";
                 using (SqlCommand command = new SqlCommand(query, connection))
                 {
                     command.Parameters.AddWithValue("@AccommodationName", accommodationName);
@@ -131,7 +131,7 @@ namespace StudentAccommodatioProgram
             using (SqlConnection connection = new SqlConnection("YourConnectionStringHere"))
             {
                 connection.Open();
-                string query = "SELECT typeOfAccommodation FROM Accommodation WHERE accommodationName = @AccommodationName";
+                string query = "SELECT typeOfAccommodation FROM AccommodationTable WHERE accommodationName = @AccommodationName";
                 using (SqlCommand command = new SqlCommand(query, connection))
                 {
                     command.Parameters.AddWithValue("@AccommodationName", accommodationName);
@@ -157,7 +157,7 @@ namespace StudentAccommodatioProgram
             connection.Open();
 
             // Insert query
-            string query = "INSERT INTO LeaseAgreement (StartDate, EndDate, Status,user_Id,accommodation_Id) " +
+            string query = "INSERT INTO LeaseAgreementTable (startDate, endDate, status,user_ID,accommodation_ID) " +
                            "VALUES (@StartDate, @EndDate, @Status,@user_Id,@accommodation_Id)";
 
             SqlCommand command = new SqlCommand(query, connection);
